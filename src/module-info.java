@@ -6,4 +6,5 @@
  *
  */
 module ConversorONE {
+	requires java.desktop;
 }
