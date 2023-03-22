@@ -5,10 +5,12 @@ import java.awt.Font;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -38,7 +40,9 @@ public class Ventana extends JFrame{
 		//colocarEtiquetas();
 		//colocarBotones();
 		//colocarRadioBotones();
-		colocarCajasDeTexto();
+		//colocarCajasDeTexto();
+		//colocarAreasDeTexto();
+		//colocarListasDesplegables();
 	
 	}
 
@@ -129,7 +133,28 @@ public class Ventana extends JFrame{
 		
 		System.out.println("Texto en la caja: "+cajaTexto.getText());
 		panel.add(cajaTexto);
-		
+	}
+	
+	private void colocarAreasDeTexto() {
+		JTextArea areaTexto = new JTextArea();
+		areaTexto.setBounds(20, 20, 300, 200);
+		areaTexto.setText("Escriba el texto aquí...");
+		areaTexto.append("\nEscribe por aquí...");
+		areaTexto.setEditable(true);
+		panel.add(areaTexto);
 		
 	}
+	
+	private void colocarListasDesplegables() {
+		String [] paises = {"Perú","Colombia","Paraguay","Ecuador"};
+		
+		JComboBox listaDesplegable1 = new JComboBox(paises);
+		listaDesplegable1.setBounds(20, 20, 100, 30);
+		
+		listaDesplegable1.addItem("Argentina");
+		listaDesplegable1.setSelectedItem("Paraguay");
+		panel.add(listaDesplegable1);
+		
+	}
+	
 }
