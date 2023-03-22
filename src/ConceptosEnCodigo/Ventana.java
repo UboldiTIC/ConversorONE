@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -130,6 +129,7 @@ public class Ventana extends JFrame{
 		
 		System.out.println("Texto en la caja: "+cajaTexto.getText());
 		panel.add(cajaTexto);
+		
 		
 	}
 }
