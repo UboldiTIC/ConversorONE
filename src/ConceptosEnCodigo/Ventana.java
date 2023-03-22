@@ -42,7 +42,7 @@ public class Ventana extends JFrame{
 		//colocarRadioBotones();
 		//colocarCajasDeTexto();
 		//colocarAreasDeTexto();
-		//colocarListasDesplegables();
+		colocarListasDesplegables();
 	
 	}
 
