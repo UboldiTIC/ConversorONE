@@ -45,6 +45,8 @@ public class Contenedor extends JFrame {
 		
 		
 		iniciarPanelTemperatura(); // revisar panel 2
+		
+		iniciarPanelMonedas(); // revisar y añadir listener a botones.
 	}
 	
 	//Título Panel:
@@ -80,6 +82,7 @@ public class Contenedor extends JFrame {
 		panelPrincipal.add(botonMonedas);
 		
 	}
+	
 	//Panel conversor de temperaturas:
 	private void iniciarPanelTemperatura() {
 		JPanel panelTemperatura = new JPanel();
@@ -87,7 +90,7 @@ public class Contenedor extends JFrame {
 		panelTemperatura.setLayout(null);
 		panelTemperatura.setBackground(Color.LIGHT_GRAY);
 		
-		panelPrincipal.add(panelTemperatura); //revisar panel 2.
+		//panelPrincipal.add(panelTemperatura); //revisar panel 2.
 		
 		//Revisar radiobotones:
 		JRadioButton botonFahrenheit = new JRadioButton("Fahrenheit a Celsius", true);
@@ -110,23 +113,31 @@ public class Contenedor extends JFrame {
 	
 	
 	//Panel Conversor de monedas:
+	
+	private void iniciarPanelMonedas() {
+		JPanel panelMonedas = new JPanel();
+		panelMonedas.setBounds(50, 150, 700, 400);
+		panelMonedas.setLayout(null);
+		panelMonedas.setBackground(Color.LIGHT_GRAY);
+		
+		panelPrincipal.add(panelMonedas); //revisar panel 2.
+		
+		//SELECCIONADOR DE MONEDAS:
+		String[] monedas = {"Dólar", "Euros", "Libras Esterlinas", "Yen Japonés", "Won Sul-Coreano","Peso Argentino"};
 
-	private void seleccionarMonedaUno() {
-		String[] monedas = {"Dólar", "Euros", "Libras Esterlinas", "Yen Japonés", "Won Sul-Coreano" };
-
-		JComboBox listaMonedas = new JComboBox(monedas);
-		listaMonedas.setBounds(600, 20, 200, 30);
-		panelPrincipal.add(listaMonedas);
+		JComboBox monedaUno = new JComboBox(monedas);
+		monedaUno.setBounds(70, 20, 200, 30);
+		monedaUno.setSelectedItem("Peso Argentino");
+		panelMonedas.add(monedaUno);
+		
+		JComboBox monedaDos = new JComboBox(monedas);
+		monedaDos.setBounds(300, 20, 200, 30);
+		panelMonedas.add(monedaDos);
+	
+		
+		
+		
+		
 	}
-	
-	private void seleccionarMonedaDos() {
-		String[] monedas = {"Peso Argentino", "Euros", "Libras Esterlinas", "Yen Japonés", "Won Sul-Coreano" };
 
-		JComboBox listaMonedas = new JComboBox(monedas);
-		listaMonedas.setBounds(400, 20, 200, 30);
-		panelPrincipal.add(listaMonedas);
-	}
-	
-	
-	
 }
