@@ -1,5 +1,7 @@
 package Operaciones;
 
+//Gracias a Steve Rocha - Consejo por empezar por aquí.
+
 public class Temperaturas {
 	// 1. Convertir de grados celsius a Fahrenheit
 	public static double convertirCelsiusAFahrenheit(double valorIngresado) {

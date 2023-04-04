@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import Operaciones.Temperaturas;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -26,11 +28,20 @@ import java.awt.SystemColor;
 public class VentanaOperaciones extends JFrame implements ActionListener {
 
 	private JPanel panelPrincipal;
+	JPanel panelMonedas, panelTemperaturas;
 	private JTextField textIngresarValor;
 	private JTextField textResultado;
 	JButton btnMonedas, btnTemperaturas;
 	
 	Temperaturas misConversiones;
+	private JTextField textValorTemperatura;
+	private JTextField textResultadoTemperatura;
+
+	
+	//Variables Temperaturas:
+	JLabel lblIngresarValor;
+	JComboBox comboBoxOpcionesTemperatura;
+	JLabel lblResultadoEs;
 	/**
 	 * Create the frame.
 	 */
@@ -40,6 +51,7 @@ public class VentanaOperaciones extends JFrame implements ActionListener {
 		iniciarComponentes();
 		
 		setTitle("Convertidor ONE");
+		getContentPane().setLayout(null);
 		setResizable(false); //No permite maximizar ni modificar tamaño de la ventana.
 		setLocationRelativeTo(null); //centrar
 	}
@@ -68,29 +80,83 @@ public class VentanaOperaciones extends JFrame implements ActionListener {
 		btnTemperaturas.addActionListener(this);
 		panelPrincipal.add(btnTemperaturas);
 		
-		//Panel Monedas
+		//Panel Monedas - El intercambio de paneles gracias a: Cristian Henao(https://www.youtube.com/watch?v=UUENqBb1l34&t=98s).
 		
-		JPanel panelMonedas = new JPanel();
-		panelMonedas.setBackground(SystemColor.desktop);
+		panelMonedas = new JPanel();
+		panelMonedas.setBackground(Color.BLUE);
 		panelMonedas.setBounds(48, 72, 504, 228);
+		panelMonedas.setLayout(null);
+		panelMonedas.setVisible(true);
 		panelPrincipal.add(panelMonedas);
+		
+		cargarComponentesMonedas();
+		
+		
+		//Panel Temperaturas
+		
+		cargarComponentesTemperaturas();
+		
 	}
 
+	private void cargarComponentesMonedas() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void cargarComponentesTemperaturas() {
+		panelTemperaturas = new JPanel();
+		panelTemperaturas.setBackground(Color.LIGHT_GRAY);
+		panelTemperaturas.setBounds(48, 72, 504, 228);
+		panelTemperaturas.setLayout(null);
+		panelTemperaturas.setVisible(false);
+		panelPrincipal.add(panelTemperaturas);
+		
+		lblIngresarValor = new JLabel("Ingrese la temperatura que desea convertir:");
+		lblIngresarValor.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblIngresarValor.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIngresarValor.setBounds(0, 10, 504, 20);
+		lblIngresarValor.setLayout(null);
+		panelTemperaturas.add(lblIngresarValor);
+		
+		textValorTemperatura = new JTextField();
+		textValorTemperatura.setHorizontalAlignment(SwingConstants.CENTER);
+		textValorTemperatura.setBounds(77, 34, 350, 40);
+		panelTemperaturas.add(textValorTemperatura);
+		textValorTemperatura.setColumns(10);
+		
+		comboBoxOpcionesTemperatura = new JComboBox(); //Cómo asignar valores desde Temperaturas???
+		comboBoxOpcionesTemperatura.setBounds(77, 84, 350, 40);
+		panelTemperaturas.add(comboBoxOpcionesTemperatura);
+		
+		lblResultadoEs = new JLabel("El resultado es:");
+		lblResultadoEs.setHorizontalAlignment(SwingConstants.CENTER);
+		lblResultadoEs.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblResultadoEs.setBounds(0, 138, 504, 15);
+		panelTemperaturas.add(lblResultadoEs);
+		
+		textResultadoTemperatura = new JTextField();
+		textResultadoTemperatura.setHorizontalAlignment(SwingConstants.CENTER);
+		textResultadoTemperatura.setBounds(77, 158, 350, 40);
+		panelTemperaturas.add(textResultadoTemperatura);
+		textResultadoTemperatura.setColumns(10);
+		
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (btnMonedas==e.getSource()) {
-			JOptionPane.showMessageDialog(null, "Hola Mundo");
-			//panelMonedas.setVisible(true);
+			//JOptionPane.showMessageDialog(null, "Hola Mundo");
+			panelMonedas.setVisible(true);
+			panelTemperaturas.setVisible(false);
 		}
 		if (btnTemperaturas==e.getSource()) {
-			JOptionPane.showMessageDialog(null, "Hola Mundo");
+			//JOptionPane.showMessageDialog(null, "Hola Mundo");
+			panelMonedas.setVisible(false);
+			panelTemperaturas.setVisible(true);
 		}
 		
 	}
 	
-	
-			
-
 	public void asignarTemperaturas(Temperaturas misConversiones) {
 		this.misConversiones=misConversiones;
 		
