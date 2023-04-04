@@ -2,15 +2,25 @@ package Convertidor;
 
 import javax.swing.JOptionPane;
 
+import Gui.VentanaOperaciones;
 import Operaciones.Temperaturas;
 
 public class Aplicacion {
 	//misConversiones = Temperaturas;
+	Temperaturas misConversiones;
 	
 	public Aplicacion() {
 		Temperaturas misConversiones = new Temperaturas();
 		
-		presentarMenu();
+		//presentarMenu();
+		presentarVentana();
+	}
+
+	private void presentarVentana() {
+		VentanaOperaciones miVentana = new VentanaOperaciones();
+		miVentana.asignarTemperaturas(misConversiones);
+		miVentana.setVisible(true);
+		
 	}
 
 	private void presentarMenu() {
