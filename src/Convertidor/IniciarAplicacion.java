@@ -6,7 +6,7 @@ import Operaciones.Temperaturas;
 
 public class IniciarAplicacion {
 	
-	public static void main(String[] args) {
-		Aplicacion convertirTemperatura = new Aplicacion();
-	}
+	//public static void main(String[] args) {
+		//Aplicacion convertirTemperatura = new Aplicacion();
+	//}
 }

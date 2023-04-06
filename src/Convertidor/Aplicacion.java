@@ -6,8 +6,21 @@ import Gui.VentanaOperaciones;
 import Operaciones.Temperaturas;
 
 public class Aplicacion {
-	//misConversiones = Temperaturas;
+	
 	Temperaturas misConversiones;
+	
+	private double valorIngresado;
+	
+	private int opcionConvertir;
+	
+	double respuestaUno;
+	double respuestaDos;
+	double respuestaTres;
+	double respuestaCuatro;
+	double respuestaCinco;
+	double respuestaSeis;
+	
+	
 	
 	public Aplicacion() {
 		Temperaturas misConversiones = new Temperaturas();
@@ -24,29 +37,30 @@ public class Aplicacion {
 	}
 
 	private void presentarMenu() {
-		String menu="Convertir Temperaturas";
-		menu+="1.Celsius a Fahrenheit";
-		menu+="2.Fahrenheit a Celsius";
-		menu+="3.Kelvin a Celsius";
-		menu+="4.Celsius a Kelvin";
-		menu+="5.Fahrenheit a Kelvin";
-		menu+="6.Kelvin a Fahrenheit";
-		menu+="Ingrese una opción";
+//		String menu="Convertir Temperaturas";
+//		menu+="1.Celsius a Fahrenheit";
+//		menu+="2.Fahrenheit a Celsius";
+//		menu+="3.Kelvin a Celsius";
+//		menu+="4.Celsius a Kelvin";
+//		menu+="5.Fahrenheit a Kelvin";
+//		menu+="6.Kelvin a Fahrenheit";
+//		menu+="Ingrese una opción";
 		
 		int cod=0;
 		
 		do {
-			double valorIngresado=Integer.parseInt(JOptionPane.showInputDialog("Ingrese Temperatura: "));
+			//double valorIngresado=Integer.parseInt(JOptionPane.showInputDialog("Ingrese Temperatura: "));
 			
-			cod=Integer.parseInt(JOptionPane.showInputDialog(menu));
+			//cod=Integer.parseInt(JOptionPane.showInputDialog(menu));
+			cod=opcionConvertir;
 			
 			switch (cod) {
 			case 1:
-				double respuestaUno=Temperaturas.convertirCelsiusAFahrenheit(valorIngresado);
+				respuestaUno=Temperaturas.convertirCelsiusAFahrenheit(valorIngresado);
 				JOptionPane.showMessageDialog(null, "El resultado es " +respuestaUno + " grados Fahrenheit");
 				break;
 			case 2:
-				double respuestaDos=Temperaturas.convertirFahrenheitACelsius(valorIngresado);
+				respuestaDos=Temperaturas.convertirFahrenheitACelsius(valorIngresado);
 				JOptionPane.showMessageDialog(null, "El resultado es " +respuestaDos + " grados Celsius");
 				break;
 			case 3:
@@ -72,6 +86,31 @@ public class Aplicacion {
 				break;
 			}
 		} while(cod!=7);
+	}
+
+	public double getRespuestaUno() {
+		return respuestaUno;
+	}
+
+	public void setRespuestaUno(double respuestaUno) {
+		this.respuestaUno = respuestaUno;
+	}
+	
+	public int getOpcionConvertir(int elementoSeleccionado) {
+		opcionConvertir = elementoSeleccionado;
+		return opcionConvertir;
+	}
+
+	public void setOpcionConvertir(int opcionConvertir) {
+		this.opcionConvertir = opcionConvertir;
+	}
+	
+	public double getValorIngresado() {
+		return valorIngresado;
+	}
+
+	public void setValorIngresado(double valorIngresado) {
+		this.valorIngresado = valorIngresado;
 	}
 	
 }

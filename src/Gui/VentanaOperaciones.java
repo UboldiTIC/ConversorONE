@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Convertidor.Aplicacion;
 import Operaciones.Temperaturas;
 
 import java.awt.BorderLayout;
@@ -24,8 +25,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import java.awt.SystemColor;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
-public class VentanaOperaciones extends JFrame implements ActionListener {
+public class VentanaOperaciones extends JFrame implements ActionListener, ItemListener {
 
 	private JPanel panelPrincipal;
 	JPanel panelMonedas, panelTemperaturas;
@@ -40,8 +46,9 @@ public class VentanaOperaciones extends JFrame implements ActionListener {
 	
 	//Variables Temperaturas:
 	JLabel lblIngresarValor;
-	JComboBox comboBoxOpcionesTemperatura;
+	JComboBox<String> comboBoxOpcionesTemperatura;
 	JLabel lblResultadoEs;
+	int elementoSeleccionado;
 	/**
 	 * Create the frame.
 	 */
@@ -87,7 +94,7 @@ public class VentanaOperaciones extends JFrame implements ActionListener {
 		panelMonedas.setBounds(48, 72, 504, 228);
 		panelMonedas.setLayout(null);
 		panelMonedas.setVisible(true);
-		panelPrincipal.add(panelMonedas);
+		//panelPrincipal.add(panelMonedas);
 		
 		cargarComponentesMonedas();
 		
@@ -118,13 +125,65 @@ public class VentanaOperaciones extends JFrame implements ActionListener {
 		lblIngresarValor.setLayout(null);
 		panelTemperaturas.add(lblIngresarValor);
 		
+		
+		
+		
+		
+		//revisar
 		textValorTemperatura = new JTextField();
+		textValorTemperatura.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				Aplicacion valorTemperatura = new Aplicacion();
+				valorTemperatura.setValorIngresado(valorTemperatura.getValorIngresado());
+			}
+		});
+		
+		
+		//textValorTemperatura.addActionListener(new ActionListener() {
+			//public void actionPerformed(ActionEvent e) {
+				//Aplicacion valorTemperatura = new Aplicacion();
+				//valorTemperatura.setValorIngresado(this.keyTyped);
+			//}
+		//});
+		
+		
+		
+		
+		
+		
 		textValorTemperatura.setHorizontalAlignment(SwingConstants.CENTER);
 		textValorTemperatura.setBounds(77, 34, 350, 40);
 		panelTemperaturas.add(textValorTemperatura);
 		textValorTemperatura.setColumns(10);
 		
-		comboBoxOpcionesTemperatura = new JComboBox(); //Cómo asignar valores desde Temperaturas???
+		comboBoxOpcionesTemperatura = new JComboBox<String>(); //Cómo asignar valores desde Temperaturas???
+		comboBoxOpcionesTemperatura.addItem("Celsius a Fahrenheit");
+		comboBoxOpcionesTemperatura.addItem("Fahrenheit a Celsius");
+		comboBoxOpcionesTemperatura.addItem("Kelvin a Celsius");
+		comboBoxOpcionesTemperatura.addItem("Celsius a Kelvin");
+		comboBoxOpcionesTemperatura.addItem("Fahrenheit a Kelvin");
+		comboBoxOpcionesTemperatura.addItem("Kelvin a Fahrenheit");
+		comboBoxOpcionesTemperatura.addItemListener(this);
+		//revisar
+		comboBoxOpcionesTemperatura.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getSource() == comboBoxOpcionesTemperatura) {
+		            String selectedElement = (String) comboBoxOpcionesTemperatura.getSelectedItem();
+		            elementoSeleccionado = Integer.parseInt(selectedElement);
+		            
+		            //lblResultadoEs.setText("Elemento seleccionado: " + selectedElement);
+		        }
+			}
+		});
+		
+	
+		
+		
+		
+		//comboBoxOpcionesTemperatura.setModel(new DefaultComboBoxModel(new String[] {"Celsius a Fahrenheit ", "Fahrenheit a Celsius", "Kelvin a Celsius", "Celsius a Kelvin", "Fahrenheit a Kelvin", "Kelvin a Fahrenheit"}));
+		
+		
 		comboBoxOpcionesTemperatura.setBounds(77, 84, 350, 40);
 		panelTemperaturas.add(comboBoxOpcionesTemperatura);
 		
@@ -134,7 +193,22 @@ public class VentanaOperaciones extends JFrame implements ActionListener {
 		lblResultadoEs.setBounds(0, 138, 504, 15);
 		panelTemperaturas.add(lblResultadoEs);
 		
+		
+		
+		
+		//revisar
 		textResultadoTemperatura = new JTextField();
+		textResultadoTemperatura.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Aplicacion resultadoTemperatura = new Aplicacion();
+				//resultadoTemperatura.getRespuestaUno();
+			}
+		});
+		
+		
+		
+		
+		
 		textResultadoTemperatura.setHorizontalAlignment(SwingConstants.CENTER);
 		textResultadoTemperatura.setBounds(77, 158, 350, 40);
 		panelTemperaturas.add(textResultadoTemperatura);
@@ -159,6 +233,11 @@ public class VentanaOperaciones extends JFrame implements ActionListener {
 	
 	public void asignarTemperaturas(Temperaturas misConversiones) {
 		this.misConversiones=misConversiones;
+		
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
 		
 	}
 }
