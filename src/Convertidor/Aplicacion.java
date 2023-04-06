@@ -23,7 +23,7 @@ public class Aplicacion {
 	
 	
 	public Aplicacion() {
-		Temperaturas misConversiones = new Temperaturas();
+		//Temperaturas misConversiones = new Temperaturas();
 		
 		//presentarMenu();
 		presentarVentana();
@@ -37,22 +37,21 @@ public class Aplicacion {
 	}
 
 	private void presentarMenu() {
-//		String menu="Convertir Temperaturas";
-//		menu+="1.Celsius a Fahrenheit";
-//		menu+="2.Fahrenheit a Celsius";
-//		menu+="3.Kelvin a Celsius";
-//		menu+="4.Celsius a Kelvin";
-//		menu+="5.Fahrenheit a Kelvin";
-//		menu+="6.Kelvin a Fahrenheit";
-//		menu+="Ingrese una opción";
+		String menu="Convertir Temperaturas";
+		menu+="1.Celsius a Fahrenheit";
+		menu+="2.Fahrenheit a Celsius";
+		menu+="3.Kelvin a Celsius";
+		menu+="4.Celsius a Kelvin";
+		menu+="5.Fahrenheit a Kelvin";
+		menu+="6.Kelvin a Fahrenheit";
+		menu+="Ingrese una opción";
 		
 		int cod=0;
 		
 		do {
-			//double valorIngresado=Integer.parseInt(JOptionPane.showInputDialog("Ingrese Temperatura: "));
+			double valorIngresado=Integer.parseInt(JOptionPane.showInputDialog("Ingrese Temperatura: "));
 			
-			//cod=Integer.parseInt(JOptionPane.showInputDialog(menu));
-			cod=opcionConvertir;
+			cod=Integer.parseInt(JOptionPane.showInputDialog(menu));
 			
 			switch (cod) {
 			case 1:
@@ -104,6 +103,8 @@ public class Aplicacion {
 	public void setOpcionConvertir(int opcionConvertir) {
 		this.opcionConvertir = opcionConvertir;
 	}
+	
+	
 	
 	public double getValorIngresado() {
 		return valorIngresado;
